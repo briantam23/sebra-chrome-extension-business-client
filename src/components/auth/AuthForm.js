@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import AuthInput from './AuthInput';
 import { login } from '../../store/actions/auth';
 import { createUser } from '../../store/actions/users';
-import Loading from './Loading';
+import Spinner from '../spinner/Spinner';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -71,7 +71,7 @@ const AuthForm = ({ pathname, params, history }) => {
   }
   return (
     <form className={classes.formContainer2} noValidate autoComplete="off">
-    { state.loading ? <Loading/> : null }
+    { state.loading ? <Spinner/> : null }
       <AuthInput state={ state } handleChange={ handleChange }/>
       <Button 
         onClick={ handleClick } 
