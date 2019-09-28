@@ -42,7 +42,8 @@ const AuthForm = ({ pathname, params, history }) => {
     username: '',
     password: '',
     loading: false,
-    error: ''
+    error: '',
+    showPassword: false
   });
 
   useEffect(() => setState({ 
@@ -69,10 +70,17 @@ const AuthForm = ({ pathname, params, history }) => {
         .catch(() => setState({ ...state, loading: false, error: 'Error! Username taken. Please try again.'}))
     }
   }
+
+  const handleClickShowPassword = () => setState({ ...state, showPassword: !state.showPassword });
+
   return (
     <form className={classes.formContainer2} noValidate autoComplete="off">
     { state.loading ? <Spinner/> : null }
-      <AuthInput state={ state } handleChange={ handleChange }/>
+      <AuthInput 
+        state={ state } 
+        handleChange={ handleChange }
+        handleClickShowPassword={ handleClickShowPassword }
+      />
       <Button 
         onClick={ handleClick } 
         variant="contained" 
